@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ToDo-Home</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-purple-700 to-blue-500 text-white p-6 flex flex-wrap justify-between items-center shadow-md">
+    <div class="flex-1 text-center md:text-left mb-4 md:mb-0">
+      <img src="image/logo.png" alt="logo" class="h-12 mx-auto md:mx-0">
+    </div>
+
+    <div class="flex-2 text-center mb-4 md:mb-0">
+      <h1 class="text-2xl md:text-3xl font-bold">Set Your Goals</h1>
+      <h3 class="italic font-light text-base md:text-lg">“Today’s goals determine tomorrow’s success.”</h3>
+    </div>
+
+    <div class="flex-1 flex flex-wrap justify-center md:justify-end gap-4">
+      <button id="add" class="bg-white text-purple-700 px-6 py-3 rounded-full font-semibold shadow hover:bg-gray-100 transition transform hover:-translate-y-1">Add Task</button>
+      <button id="view-btn" class="bg-white/20 text-white border-2 border-white px-6 py-3 rounded-full font-semibold shadow hover:bg-white hover:text-purple-700 transition transform hover:-translate-y-1 hidden">View Task</button>
+    </div>
+  </header>
+
+  <!-- List / Dashboard -->
+  <section class="max-w-5xl mx-auto my-8 p-6 bg-white rounded-xl shadow-md w-11/12">
+    <h2 class="text-purple-700 text-2xl mb-6 pb-2 border-b-2 border-gray-200">Your Tasks</h2>
+
+    <!-- Task Filters -->
+    <div class="flex flex-wrap gap-3 mb-6">
+      <button class="px-4 py-2 rounded-full bg-purple-700 text-white font-semibold">All Tasks</button>
+      <button class="px-4 py-2 rounded-full bg-gray-200">Active</button>
+      <button class="px-4 py-2 rounded-full bg-gray-200">Completed</button>
+    </div>
+
+    <!-- Task Stats -->
+    <div class="flex flex-wrap justify-between bg-gray-100 p-4 rounded-md mb-6">
+      <div class="text-center flex-1 min-w-[100px] mb-2">
+        <div class="text-purple-700 text-xl font-bold">0</div>
+        <div class="text-gray-600 text-sm">Total Tasks</div>
+      </div>
+      <div class="text-center flex-1 min-w-[100px] mb-2">
+        <div class="text-purple-700 text-xl font-bold">0</div>
+        <div class="text-gray-600 text-sm">To Do</div>
+      </div>
+      <div class="text-center flex-1 min-w-[100px] mb-2">
+        <div class="text-purple-700 text-xl font-bold">0</div>
+        <div class="text-gray-600 text-sm">Completed</div>
+      </div>
+    </div>
+
+    <!-- Task List -->
+    <ul id="task-list" class="space-y-4"></ul>
+  </section>
+
+  <!-- Add/Edit Form -->
+  <section class="max-w-5xl mx-auto my-8 p-6 bg-white rounded-xl shadow-md w-11/12 hidden" id="main">
+    <form id="todo-form" class="flex flex-col" novalidate>
+      <h2 class="text-purple-700 text-2xl mb-6 text-center">Add New Task</h2>
+
+      <label for="task-input" class="mb-2 font-semibold text-gray-700">New Task</label>
+      <input type="text" id="task-input" placeholder="Enter your task here..." required class="p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:border-purple-700">
+
+      <label for="desc-input" class="mb-2 font-semibold text-gray-700">Description</label>
+      <textarea id="desc-input" maxlength="50" placeholder="Enter task description..." required class="p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:border-purple-700 min-h-[100px]"></textarea>
+
+      <div class="flex flex-wrap gap-4 mb-4">
+        <div class="flex-1 min-w-[150px]">
+          <label for="date-input" class="mb-2 font-semibold text-gray-700">Due Date</label>
+          <input type="date" id="date-input" required class="p-3 w-full border border-gray-300 rounded-lg focus:outline-none focus:border-purple-700">
+        </div>
+        <div class="flex-1 min-w-[150px]">
+          <label for="time-input" class="mb-2 font-semibold text-gray-700">Due Time</label>
+          <input type="time" id="time-input" required class="p-3 w-full border border-gray-300 rounded-lg focus:outline-none focus:border-purple-700">
+        </div>
+      </div>
+
+      <button type="submit" id="add-btn" class="bg-purple-700 text-white py-3 px-6 rounded-lg font-semibold mt-2 hover:bg-blue-600 transform hover:-translate-y-1 transition">Add Task</button>
+    </form>
+  </section>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
